@@ -1,5 +1,3 @@
-import {getUserInfo} from '@/api/home';
-
 export default {
     state: {
         userInfo: {
@@ -18,11 +16,6 @@ export default {
         }
     },
     actions: {
-        async getUserInfo({commit, state}) {
-            const { userInfo } = await getUserInfo();
-            commit('SET_USERINFO', userInfo);
-            return userInfo;
-        },
         //获取页面传递过来的参数
         getActionParam({commit}, params) {
             commit('SET_PARAMS', params);

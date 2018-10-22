@@ -4,13 +4,15 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import home from './modules/home';
+import permission from './modules/permission';
+import user from './modules/user';
 
 import getters from './getters';
-
-
 const store = new Vuex.Store({
   modules: {
-    home
+    home,
+    permission,
+    user
   },
   getters
 })

@@ -17,6 +17,7 @@ export default {
 
             el.addEventListener("touchmove", function (event) {
                 var touch = event.targetTouches[0];
+                //新增固定定位
                 el.style.position = 'fixed';
                 el.style.left = touch.clientX - disX + "px";
                 el.style.top = touch.clientY - disY + "px";
@@ -30,10 +31,12 @@ export default {
                 }
                 //上面
                 if (el.offsetTop <= 0) {
+                    event.preventDefault(); //当移动到上下边线，禁用页面整体滚动
                     el.style.top = 0;
                 }
                 //下面
                 if (el.offsetTop >= pHeight - oHeight) {
+                    event.preventDefault();
                     el.style.top = pHeight - oHeight + "px";
                 }
             });

@@ -34,5 +34,8 @@ export default {
     font-size: 20px;
     color: teal;
     font-weight: 600;
+    p {
+        margin: 0;
+    }
 }
 </style>
