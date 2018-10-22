@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-//固定展示的路由
+//固定展示的路由， 如果非开启权限分配功能，将全部路由添加到此处 ↓
 export const constantRouterMap = [
   {
     path: '/',
