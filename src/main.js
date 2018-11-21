@@ -4,6 +4,10 @@ import router from './router/index'
 import store from './store/index'
 //初始化样式
 import 'normalize.css';
+//引入vantUI
+import './vantUI';
+//引入form表单验证
+import './form/formValidate';
 
 //定义是否开启权限分配
 Vue.prototype.$openPremission = false;
@@ -19,6 +23,8 @@ Object.keys(filters).forEach(key => {
 });
 
 //自定义全局指令
+
+
 
 
 Vue.config.productionTip = false

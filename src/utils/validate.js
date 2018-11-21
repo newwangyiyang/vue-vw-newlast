@@ -43,7 +43,7 @@ export function validateEmail(email) {
 
 /* 手机号 */ 
 export function validatePhone(tel) {
-  const reg = /^1\d{10}/;
+  const reg = /^1\d{10}$/;
   return reg.test(tel);
 }
 
