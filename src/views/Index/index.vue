@@ -7,10 +7,17 @@
         <van-field v-validate="'required|phone'" data-vv-as="手机号" v-model="value1" required name="phone" />
         <span class="error_msg">{{ errors.first('phone') }}</span>
         <van-button @click="clickEvent" type="primary">提交</van-button>
+        <slide-bar :showTrue="showTrue">
+            <div class="i_left_show">
+
+            </div>
+        </slide-bar>
+        <van-button class="i_sliderbar_btn" @click="showTrue=!showTrue" type="primary">展示SlideBar</van-button>
     </div>
 </template>
 
 <script>
+import SlideBar from '../../components/SlideBar/index';
 export default {
     name: 'Index',
     data() {
@@ -18,10 +25,14 @@ export default {
             value: '',
             value1: '',
             value2: '',
+            showTrue: false
         }
     },
     mounted() {
         document.title = '';
+    },
+    components: {
+        SlideBar
     },
     methods: {
         clickEvent() {
@@ -43,6 +54,19 @@ export default {
         display: block;
         width: 100%;
         height: 100%;
+    }
+    .i_left_show {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 60vw;
+        background-color: teal
+    }
+    .i_sliderbar_btn {
+        position: fixed;
+        right: 0;
+        bottom: 0;
     }
 }
 </style>
