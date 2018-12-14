@@ -49,7 +49,15 @@ export const asyncRouterMap = [
 
 
 export default new Router({
-  routes: constantRouterMap
+  routes: constantRouterMap,
+  scrollBehavior(to, from, savedPosition) {
+    //设置所有跳转后的路由都滚动到顶部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
   // {
   //   path: '/about',
   //   name: 'about',
