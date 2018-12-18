@@ -13,11 +13,16 @@
             </div>
         </slide-bar>
         <van-button class="i_sliderbar_btn" @click="showTrue=!showTrue" type="primary">展示SlideBar</van-button>
+        <br />
+        <van-uploader :after-read="onRead">
+            点击上传压缩图片测试
+        </van-uploader>
     </div>
 </template>
 
 <script>
 import SlideBar from '../../components/SlideBar/index';
+import Compressor from 'compressorjs';
 export default {
     name: 'Index',
     data() {
@@ -41,6 +46,28 @@ export default {
             this.$validator.validate().then(result => {
                 console.log(result);
             })
+        },
+        //图片压缩测试上传
+        onRead(file) {
+            console.log(file);
+            new Compressor(file.file, {
+                quality: 0.6,
+                success(result) {
+                    console.log(result);
+                    // const formData = new FormData();
+
+                    // // The third parameter is required for server
+                    // formData.append('file', result, result.name);
+
+                    // // Send the compressed image file to server with XMLHttpRequest.
+                    // axios.post('/path/to/upload', formData).then(() => {
+                    //     console.log('Upload success');
+                    // });
+                },
+                error(err) {
+                    console.log(err.message);
+                },
+            });
         }
     },
 }
