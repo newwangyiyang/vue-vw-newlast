@@ -17,14 +17,19 @@
         <van-uploader :after-read="onRead">
             点击上传压缩图片测试
         </van-uploader>
+
+        <van-button @click="reload" type="primary">刷新Vue</van-button>
     </div>
 </template>
 
 <script>
 import SlideBar from '../../components/SlideBar/index';
 import Compressor from 'compressorjs';
+
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'Index',
+    inject: [ 'reload' ],
     data() {
         return {
             value: '',
@@ -33,13 +38,18 @@ export default {
             showTrue: false
         }
     },
-    mounted() {
+    async mounted() {
         document.title = '';
+        console.log(this.userInfo.name);
     },
     components: {
         SlideBar
     },
+    computed: {
+        ...mapGetters(['userInfo'])
+    },
     methods: {
+        ...mapActions(['getUserInfo']),
         clickEvent() {
             // console.log(this.$validator.validate());
             //验证所有输入项是否成功，根据result来进行判断
@@ -69,6 +79,9 @@ export default {
                 },
             });
         }
+    },
+    reload() {
+
     },
 }
 </script>
