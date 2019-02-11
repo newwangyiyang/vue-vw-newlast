@@ -38,6 +38,9 @@ export default {
             showTrue: false
         }
     },
+    created() {
+        //created也可初始化数据，进行初始化标题，获取url中携带的参数，
+    },
     async mounted() {
         document.title = '';
         console.log(this.userInfo.name);
