@@ -18,14 +18,14 @@
             点击上传压缩图片测试
         </van-uploader>
 
-        <van-button @click="reload" type="primary">刷新Vue</van-button>
+        <van-button @click="getOne" type="primary">刷新Vue</van-button>
     </div>
 </template>
 
 <script>
 import SlideBar from '../../components/SlideBar/index';
 import Compressor from 'compressorjs';
-
+import _ from 'lodash'
 import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'Index',
@@ -81,10 +81,13 @@ export default {
                     console.log(err.message);
                 },
             });
-        }
+        },
+        getOne: _.debounce(() => {
+            console.log(321)
+        }, 300)
     },
     reload() {
-
+        
     },
 }
 </script>

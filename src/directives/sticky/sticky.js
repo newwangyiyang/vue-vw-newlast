@@ -1,4 +1,4 @@
-let listenAction;
+let listenAction
 export default {
     inserted(el, binding) {
         const params = binding.value || {}

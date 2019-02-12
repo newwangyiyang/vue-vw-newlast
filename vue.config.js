@@ -4,6 +4,7 @@ function resolve(dir) {
 }
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const productionGzipExtensions = ['js', 'css']
+
 module.exports = {
     baseUrl: process.env.NODE_ENV === 'production' ? './' : '/', //设置output.publicPath，区分生产环境和开发环境
     outputDir: 'dist', //生成的生产环境构建文件的目录,默认dist文件名
@@ -40,11 +41,37 @@ module.exports = {
     css: {
         //向所有 less 样式传入共享的全局变量
         loaderOptions: {
-            // 给 less-loader 传递选项
             less: {
-                // @/ 是 src/ 的别名
-                data: `@import "@/assets/less/public.less";`
+              javascriptEnabled: true
             }
-        }
+        },
+        extract: true,
+
+        // 是否开启 CSS source map？
+        sourceMap: false,
+
+        // 为所有的 CSS 及其预处理文件开启 CSS Modules。
+        // 这个选项不会影响 `*.vue` 文件。
+        modules: false
+    },
+    parallel: require('os').cpus().length > 1,
+    chainWebpack: config => {
+        //新增别名
+        config.resolve.alias
+        .set('@$', resolve('src'))
+        .set('@img', resolve('src/assets/img'))
+        //向所有 Less 样式传入共享的全局变量
+        const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+        types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
     }
+}
+
+function addStyleResource(rule) {
+    rule.use('style-resource')
+        .loader('style-resources-loader')
+        .options({
+            patterns: [
+                path.resolve(__dirname, 'src/assets/less/public.less'), // 需要全局导入的less
+            ],
+        })
 }
