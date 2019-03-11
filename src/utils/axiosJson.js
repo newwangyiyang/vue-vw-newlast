@@ -1,9 +1,16 @@
 import axios from 'axios';
 
+/**
+ * process.env.VUE_APP_BASE_URL
+ * Vue/cli3.0中配置全局环境变量
+ * 根目录创建.env.development和.env.production文件 (区分开发和生产环境)
+ * 里面的键值对必须以VUE_APP开头 VUE_APP_NAME=万一一样
+ * 通过process.env.VUE_APP_NAME进行访问
+ */
 
 //以application/json进行提交
 const axiosJson = axios.create({
-    baseURL: 'http://localhost/',
+    baseURL: process.env.VUE_APP_BASE_URL,
     timeout: 4000,
     headers: {'Content-Type': 'application/json;charset=UTF-8'}
 });
