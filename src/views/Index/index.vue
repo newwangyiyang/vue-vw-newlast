@@ -19,6 +19,9 @@
         </van-uploader>
 
         <van-button @click="getOne" type="primary">刷新Vue</van-button>
+        <div class="onepx_test">
+
+        </div>
     </div>
 </template>
 
@@ -94,8 +97,7 @@ export default {
 
 <style scoped lang='less'>
 .Index {
-    min-height: 100vh;
-    background-color: skyblue;
+    .fullscreen-bg('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552379499611&di=ca093a9afeeea7a458661f561b978cf2&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F10%2F20141010002206_uMZ4G.jpeg');
     img {
         display: block;
         width: 100%;
@@ -114,5 +116,11 @@ export default {
         right: 0;
         bottom: 0;
     }
+}
+.onepx_test {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    .blur()
 }
 </style>
