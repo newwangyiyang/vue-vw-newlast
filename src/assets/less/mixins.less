@@ -73,6 +73,15 @@
 ├   字体                              ┆
 └------------------------------------*/
 
+//自定义字体
+.font-customer(@fontname: 'maobi', @url) {
+  @font-face {
+    font-family: @fontname;
+    src: url(@url);
+  }
+}
+//使用自定义字体
+.user-cfont() { font-family: 'maobi'; }
 // 字体大小
 .fz(@fz) { font-size: @fz; }
 
