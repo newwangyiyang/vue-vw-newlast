@@ -33,7 +33,8 @@ module.exports = {
         host: 'localhost',
         port: 8888,
         https: false,
-        hotOnly: false,
+        hot: true,
+        hotOnly: true,
         open: true,
         proxy: '', // string | Object
         before: app => {}
