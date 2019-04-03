@@ -10,9 +10,6 @@ module.exports = {
     outputDir: 'dist', //生成的生产环境构建文件的目录,默认dist文件名
     assetsDir: 'static', //配置静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
     productionSourceMap: false, //生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
-    chainWebpack: (config) => { //配置别名
-        config.resolve.alias.set('@', resolve('src'))
-    },
     configureWebpack: config => { //默认开启gzip压缩(https://www.buchang.com)中nginx支持
         if (process.env.NODE_ENV === 'production') {
             config.plugins.push(
