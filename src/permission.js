@@ -5,6 +5,11 @@ import Vue from 'vue';
 const whiteList = ['/Index']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
+  // 动态设置title***start***
+  if(to.meta.title) {
+    document.title = to.meta.title
+  }
+  // 动态设置title***end***
   if (Vue.prototype.$openPremission) { // 开启权限
     /* has token*/
     if (to.path === '/Index') {
